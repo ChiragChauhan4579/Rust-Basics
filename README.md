@@ -11,6 +11,7 @@ This repository is created as a learning tutorials by following various youtube 
 1. [Basics and Variable Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#basics_and_variables-folder)
 2. [Functions Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#functions-folder)
 3. [Ownership Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#ownership-folder)
+4. [Reference and Borrowing Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#reference_and_borrowing-folder)
 
 # basics_and_variables folder
 
@@ -110,3 +111,29 @@ When creating a string type variable it would be now essential to use String::fr
 For stack based data clonining does not need to happen as the data is of fixed size and can be copied to another variale easily and this is what we call as copy.
 
 Taking ownership and then returning ownership with every function is very complicated. Actually we can even do these things without transferring ownerships by using reference. We will see that in next project.
+
+# Reference and Borrowing Folder
+
+A reference is like a pointer in that it’s an address we can follow to access the data stored at that address; that data is owned by some other variable. Unlike a pointer, a reference is guaranteed to point to a valid value of a particular type for the life of that reference. The opposite of referencing by using & is dereferencing, which is accomplished with the dereference operator, *.
+
+Reference can be used to pass the value of something without transferring the ownership. In the code example we pass &s1 to the calculate_length function (not we need to define the type as &String here), this will pass the pointer reference to the fucntion instead of transfering the ownership to it. When functions have references as parameters instead of the actual values, we won’t need to return the values in order to give back ownership, because we never had ownership. This is what we call as borrow.
+
+When we need to pass mutable reference we can give it as &mut data_type. Here if you want to return some value make sure to return the same type &mut data_type.
+
+Referencing rules in terms of mutability:
+1. At a given time, there can only be a single mutable reference or any number of immutable references.
+2. Multiple mutable references are not allowed.
+3. Mutable variable can be borrowed as immutable but immutable cannot be borrowed as mutable.
+4. References must always be valid.
+
+The benefit of having this restriction is that Rust can prevent data races at compile time. A data race is similar to a race condition and happens when these three behaviors occur:
+
+* Two or more pointers access the same data at the same time.
+* At least one of the pointers is being used to write to the data.
+* There’s no mechanism being used to synchronize access to the data.
+
+Data races cause undefined behavior and can be difficult to diagnose and fix when you’re trying to track them down at runtime; Rust prevents this problem by refusing to compile code with data races!
+
+A reference’s scope starts from where it is introduced and continues through the last time that reference is used. Therefore in the example when we create mutable reference after immutable reference it is still getting accepted.
+
+Dangling pointer - A pointer that references a location in memory that may have been given to someone else—by freeing some memory while preserving a pointer to that memory. A example of this is when you return a reference of some value from one function to main function, when the other function ends the scope of the variables also end and their memory are freed. This will cause the returned reference to hold an invalid value. Rust does not allow this and will cause a direct error at time of compiling. Simply pass the value that needs to be returned and not the reference to it.
