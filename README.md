@@ -8,9 +8,9 @@ This repository is created as a learning tutorials by following various youtube 
 
 
 # Navigate to:
-1. ![Basics and Variable Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#basics_and_variables-folder)
-2. ![Functions Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#functions-folder)
-3. ![Ownership Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#ownership-folder)
+1. [Basics and Variable Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#basics_and_variables-folder)
+2. [Functions Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#functions-folder)
+3. [Ownership Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#ownership-folder)
 
 # basics_and_variables folder
 
