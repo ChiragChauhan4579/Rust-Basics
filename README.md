@@ -8,8 +8,9 @@ This repository is created as a learning tutorials by following various youtube 
 
 
 # Navigate to:
-1. [Basics and Variable Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#basics_and_variables-folder)
-2. [Functions Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#functions-folder)
+1. ![Basics and Variable Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#basics_and_variables-folder)
+2. ![Functions Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#functions-folder)
+3. ![Ownership Folder](https://github.com/ChiragChauhan4579/Rust-Basics/blob/main/README.md#ownership-folder)
 
 # basics_and_variables folder
 
@@ -87,3 +88,25 @@ In the code I have shown a code with function sum. It takes x and y as i32 and r
 2. Don't end the value with semicolon if it to be returned.
 3. Ensure return type and returned value to be of same type. 
 4. An evaluating value cannot be returned. Example if you try to write x = x + 2 as an return value it would return (). So you have to write that as an statement ending with semicolon and give x as an expression in the end. 
+
+# Ownership Folder
+
+Ownership in Rust is a system that manages memory without a garbage collector or manual allocation. Rust’s compiler enforces rules that ensure memory safety, and if these rules are broken, the program won't compile.
+
+Memory in Rust is divided into the stack and the heap. The stack stores values in a last-in, first-out manner with fixed sizes, while the heap stores data dynamically, using pointers.
+
+Ownership tracks which parts of the code use heap data, minimizes duplicate data, and cleans up unused data. Understanding ownership simplifies memory management in Rust, reducing the need to worry about the stack and heap directly.
+
+Ownership Rules:
+
+1. Each value in Rust has an owner.
+2. There can only be one owner at a time.
+3. When the owner goes out of scope, the value will be dropped.
+
+In earlier programs we saw the integer, float and boolean data types, they all are of fixed size and therefore stored on stack and does not require to implement ownership rules but with String we might not what is the length of string where user input might be needed etc. So here ownership rules need to be taken care of.
+
+When creating a string type variable it would be now essential to use String::from. This String type would have 2 values: a pointer and a memory which holds its values. Now if we create another variable and use variable_b = variable_a, then the pointer of variable_a is moved to variable_b and the vairbale_a will no longer be valid. To avoid this we can use clone fucntion.
+
+For stack based data clonining does not need to happen as the data is of fixed size and can be copied to another variale easily and this is what we call as copy.
+
+Taking ownership and then returning ownership with every function is very complicated. Actually we can even do these things without transferring ownerships by using reference. We will see that in next project.
